@@ -19,23 +19,17 @@ class App extends React.Component {
 
     const num1 = Number(this.state.num1);
     const num2 = Number(this.state.num2);
-    let result = "";
-    console.log(this.state.oper);
-    switch (this.state.oper) {
-      case "+":
-        console.log("what's up");
-      // this.setState(result: (num1 + num2));
-      case "-":
-        console.log("Subtraction is key");
-        result = num1 - num2;
-      case "*":
-        result = num1 * num2;
-      case "/":
-        result = num1 / num2;
-      default:
-        result = num1 + num2;
+    const oper = this.state.oper;
+
+    if (oper === "+") {
+      this.setState({ result: num1 + num2 });
+    } else if (oper === "-") {
+      this.setState({ result: num1 - num2 });
+    } else if (oper === "*") {
+      this.setState({ result: num1 * num2 });
+    } else if (oper === "/") {
+      this.setState({ result: num1 / num2 });
     }
-    console.log(result);
   };
   render() {
     return (
@@ -63,7 +57,7 @@ class App extends React.Component {
           </select>
           <label htmlFor="num2">First Number Input:</label>
           <input
-            type="text"
+            type="number"
             id="num2"
             required
             value={this.state.num2}
@@ -72,7 +66,7 @@ class App extends React.Component {
           <input type="submit" value="Calculate" />
         </form>
         <div>
-          <h1>Result!!!</h1>
+          <h1>Result = {this.state.result}</h1>
           <p></p>
         </div>
       </>
