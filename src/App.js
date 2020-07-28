@@ -26,16 +26,22 @@ class App extends React.Component {
     const num2 = Number(this.state.num2);
     const oper = this.state.oper;
 
-    // Used if statements here, could not get switch to work, need more guidance
-    // Do the math depending on the operator the duser chose
-    if (oper === "+") {
-      this.setState({ result: num1 + num2 });
-    } else if (oper === "-") {
-      this.setState({ result: num1 - num2 });
-    } else if (oper === "*") {
-      this.setState({ result: num1 * num2 });
-    } else if (oper === "/") {
-      this.setState({ result: num1 / num2 });
+    // Switch to determine the math operation
+    switch (oper) {
+      case "+":
+        this.setState({ result: num1 + num2 });
+        break;
+      case "-":
+        this.setState({ result: num1 - num2 });
+        break;
+      case "*":
+        this.setState({ result: num1 * num2 });
+        break;
+      case "/":
+        this.setState({ result: num1 / num2 });
+        break;
+      default:
+        this.setState({ result: "?" });
     }
   };
   render() {
@@ -45,7 +51,7 @@ class App extends React.Component {
         <div className="container">
           {/* Calculate result upon submission of the form */}
           <form onSubmit={this.calcResult}>
-            {/* Type number eensures that a valid number is input and the required tag to ensure no empty field. 
+            {/* Type number ensures that a valid number is input and the required tag to ensure no empty field. 
                 This limits the need for error checking */}
             <label htmlFor="num1">First Number Input:</label>
             <input
