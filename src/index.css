@@ -1,0 +1,44 @@
+html {
+  background-color: rgb(37, 15, 9);
+  background-image: url(images/landscape-1115428_1920.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body {
+  margin-top: 110px;
+  height: 100%;
+  font-size: 20px;
+}
+form {
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+input {
+  width: 150px;
+}
+select {
+  width: 50px;
+  font-size: 25px;
+  text-align: center;
+}
+label {
+  margin: 20px 0 5px 0;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  text-align: center;
+}
+#submit {
+  font-size: 18px;
+  margin-top: 15px;
+  width: 115px;
+  background-color: #251d07;
+  color: #f0efdb;
+  text-transform: uppercase;
+}
