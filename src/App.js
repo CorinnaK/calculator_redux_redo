@@ -11,16 +11,23 @@ class App extends React.Component {
       result: "", // Keep track of results to display later
     };
   }
+
+  // update state values
   updateCalc(key, value) {
     this.setState({ [key]: value });
   }
+
+  //
   calcResult = (event) => {
     event.preventDefault();
 
+    // simplify the variable to to make it shorter to write
     const num1 = Number(this.state.num1);
     const num2 = Number(this.state.num2);
     const oper = this.state.oper;
+
     // Used if statements here, could not get switch to work, need more guidance
+    // Do the math depending on the operator the duser chose
     if (oper === "+") {
       this.setState({ result: num1 + num2 });
     } else if (oper === "-") {
@@ -36,7 +43,10 @@ class App extends React.Component {
       <>
         <h1>Welcome to my calculator</h1>
         <div className="container">
+          {/* Calculate result upon submission of the form */}
           <form onSubmit={this.calcResult}>
+            {/* Type number eensures that a valid number is input and the required tag to ensure no empty field. 
+                This limits the need for error checking */}
             <label htmlFor="num1">First Number Input:</label>
             <input
               type="number"
