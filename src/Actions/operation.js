@@ -11,12 +11,12 @@ const updateData = (calcData) => {
   };
 };
 
-const operation = (calcData) => {
-  return {
-    type: "CALCULATE_RESULT",
-    num1: calcData.num1,
-    num2: calcData.num2,
-    oper: calcData.oper,
-  };
-};
-export { operation, updateData };
+// const operation = (calcData) => {
+//   return {
+//     type: "CALCULATE_RESULT",
+//     num1: calcData.num1,
+//     num2: calcData.num2,
+//     oper: calcData.oper,
+//   };
+// };
+export default updateData;

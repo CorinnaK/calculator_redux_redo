@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { operation, updateData } from "../Actions/operation";
+import updateData from "../Actions/operation";
 import { connect } from "react-redux";
 
 class App extends React.Component {
@@ -22,9 +22,34 @@ class App extends React.Component {
   //
   calcResult = (event) => {
     event.preventDefault();
-    this.props.dispatch(updateData(this.state));
+
     // simplify the variable to to make it shorter to write
+    const num1 = Number(this.state.num1);
+    const num2 = Number(this.state.num2);
+    const oper = this.state.oper;
+    let result = "";
+
+    // Switch to determine the math operation
+    switch (oper) {
+      case "+":
+        this.setState({ result: num1 + num2 });
+        break;
+      case "-":
+        this.setState({ result: num1 - num2 });
+        break;
+      case "*":
+        this.setState({ result: num1 * num2 });
+        break;
+      case "/":
+        this.setState({ result: num1 / num2 });
+        result = num1 / num2;
+        return result;
+      default:
+        this.setState({ result: "?" });
+    }
+    this.props.dispatch(updateData(this.state));
   };
+
   render() {
     return (
       <>
@@ -64,7 +89,7 @@ class App extends React.Component {
             <input type="submit" id="submit" value="Calculate" />
           </form>
           <div>
-            {this.props.dispatch(operation(this.state))}
+            <h1> Result = {this.state.result} </h1>
             <p></p>
           </div>
         </div>

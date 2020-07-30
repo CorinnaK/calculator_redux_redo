@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class History extends Component {
+class CalculationHistory extends Component {
   render() {
-    return <div></div>;
+    return <li>{this.props.text}</li>;
   }
 }
+export default connect(null)(CalculationHistory);
