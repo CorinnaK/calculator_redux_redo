@@ -1,5 +1,7 @@
 import React from "react";
-import "./App.css";
+import "../App.css";
+import { operation, updateData } from "../Actions/operation";
+import { connect } from "react-redux";
 
 class App extends React.Component {
   constructor(props) {
@@ -20,29 +22,8 @@ class App extends React.Component {
   //
   calcResult = (event) => {
     event.preventDefault();
-
+    this.props.dispatch(updateData(this.state));
     // simplify the variable to to make it shorter to write
-    const num1 = Number(this.state.num1);
-    const num2 = Number(this.state.num2);
-    const oper = this.state.oper;
-
-    // Switch to determine the math operation
-    switch (oper) {
-      case "+":
-        this.setState({ result: num1 + num2 });
-        break;
-      case "-":
-        this.setState({ result: num1 - num2 });
-        break;
-      case "*":
-        this.setState({ result: num1 * num2 });
-        break;
-      case "/":
-        this.setState({ result: num1 / num2 });
-        break;
-      default:
-        this.setState({ result: "?" });
-    }
   };
   render() {
     return (
@@ -83,7 +64,7 @@ class App extends React.Component {
             <input type="submit" id="submit" value="Calculate" />
           </form>
           <div>
-            <h1>Result = {this.state.result}</h1>
+            {this.props.dispatch(operation(this.state)).map =>}
             <p></p>
           </div>
         </div>
@@ -91,5 +72,6 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;
+export default connect((state) => {
+  return { updateData: state };
+})(App);
