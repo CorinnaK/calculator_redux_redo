@@ -64,7 +64,7 @@ class App extends React.Component {
             <input type="submit" id="submit" value="Calculate" />
           </form>
           <div>
-            {this.props.dispatch(operation(this.state)).map =>}
+            {this.props.dispatch(operation(this.state))}
             <p></p>
           </div>
         </div>
