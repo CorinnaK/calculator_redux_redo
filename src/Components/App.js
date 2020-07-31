@@ -2,8 +2,6 @@ import React from "react";
 import "../App.css";
 import updateData from "../Actions/operation";
 import { connect } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
-import CalculationHistory from "./Historys";
 
 class App extends React.Component {
   constructor(props) {
@@ -35,25 +33,26 @@ class App extends React.Component {
     switch (oper) {
       case "+":
         result = num1 + num2;
-        this.setState({ result: result });
+        this.updateCalc("result", result);
+        // this.setState({ result: result });
         break;
       case "-":
         result = num1 - num2;
-        this.setState({ result: result });
+        this.updateCalc("result", result);
         break;
       case "*":
         result = num1 * num2;
-        this.setState({ result: result });
+        this.updateCalc("result", result);
         break;
       case "/":
         result = num1 / num2;
-        this.setState({ result: result });
+        this.updateCalc("result", result);
         break;
       default:
         this.setState({ result: "?" });
     }
-    this.updateCalc("result", result);
-    this.props.dispatch(updateData(this.state));
+    const data = updateData(this.state);
+    this.props.dispatch(data);
   };
 
   render() {
