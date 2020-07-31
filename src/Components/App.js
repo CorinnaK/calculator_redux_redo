@@ -49,10 +49,18 @@ class App extends React.Component {
         this.updateCalc("result", result);
         break;
       default:
-        this.setState({ result: "?" });
+        result = "Error";
+        this.updateCalc("result", result);
     }
-    const data = updateData(this.state);
-    this.props.dispatch(data);
+
+    this.props.dispatch(
+      updateData({
+        num1: this.state.num1,
+        num2: this.state.num2,
+        oper: this.state.oper,
+        result: result,
+      })
+    );
   };
 
   render() {
