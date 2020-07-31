@@ -3,7 +3,7 @@ import "../App.css";
 import updateData from "../Actions/operation";
 import { connect } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import CalculationHistory from "./History";
+import CalculationHistory from "./Historys";
 
 class App extends React.Component {
   constructor(props) {
@@ -52,7 +52,9 @@ class App extends React.Component {
       default:
         this.setState({ result: "?" });
     }
+    this.updateCalc("result", result);
     this.props.dispatch(updateData(this.state));
+    // this.setState({ num1: "", num2: "" });
   };
 
   render() {
@@ -93,14 +95,9 @@ class App extends React.Component {
             />
             <input type="submit" id="submit" value="Calculate" />
           </form>
-          <div>
-            <h1> Result = {this.result} </h1>
-          </div>
-          <ul>
-            {this.props.updateData.map((data) => (
-              <CalculationHistory text={data} />
-            ))}
-          </ul>
+        </div>
+        <div>
+          <h1> Result = {this.result} </h1>
         </div>
       </>
     );

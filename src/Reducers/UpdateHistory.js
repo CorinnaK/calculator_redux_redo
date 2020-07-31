@@ -7,7 +7,7 @@ const updateHistory = (state = [], action) => {
       const newHistoryString = `${action.num1} ${action.oper} ${action.num2} = ${action.result}`;
       const newHistoryObj = {
         value: newHistoryString,
-        key: uuidv4(),
+        // key: uuidv4(),
       };
       calcHistory.push(newHistoryString);
       return calcHistory;
