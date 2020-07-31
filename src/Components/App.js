@@ -2,6 +2,8 @@ import React from "react";
 import "../App.css";
 import updateData from "../Actions/operation";
 import { connect } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+import CalculationHistory from "./History";
 
 class App extends React.Component {
   constructor(props) {
@@ -32,18 +34,21 @@ class App extends React.Component {
     // Switch to determine the math operation
     switch (oper) {
       case "+":
-        this.setState({ result: num1 + num2 });
+        result = num1 + num2;
+        this.setState({ result: result });
         break;
       case "-":
-        this.setState({ result: num1 - num2 });
+        result = num1 - num2;
+        this.setState({ result: result });
         break;
       case "*":
-        this.setState({ result: num1 * num2 });
+        result = num1 * num2;
+        this.setState({ result: result });
         break;
       case "/":
-        this.setState({ result: num1 / num2 });
         result = num1 / num2;
-        return result;
+        this.setState({ result: result });
+        break;
       default:
         this.setState({ result: "?" });
     }
@@ -57,8 +62,8 @@ class App extends React.Component {
         <div className="container">
           {/* Calculate result upon submission of the form */}
           <form onSubmit={this.calcResult}>
-            {/* Type number ensures that a valid number is input and the required tag to ensure no empty field. 
-                This limits the need for error checking */}
+            {/* Type number ensures that a valid number is input and the required tag to ensure no empty field.
+             */}
             <label htmlFor="num1">First Number Input:</label>
             <input
               type="number"
@@ -89,9 +94,13 @@ class App extends React.Component {
             <input type="submit" id="submit" value="Calculate" />
           </form>
           <div>
-            <h1> Result = {this.state.result} </h1>
-            <p></p>
+            <h1> Result = {this.result} </h1>
           </div>
+          <ul>
+            {this.props.updateData.map((data) => (
+              <CalculationHistory text={data} />
+            ))}
+          </ul>
         </div>
       </>
     );

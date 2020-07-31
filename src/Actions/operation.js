@@ -1,9 +1,9 @@
-import React from "react";
-import App from "../Components/App";
+import { v4 as uuidv4 } from "uuid";
 
 const updateData = (calcData) => {
   return {
     type: "UPDATE_HISTORY",
+    key: uuidv4(),
     num1: calcData.num1,
     num2: calcData.num2,
     oper: calcData.oper,
@@ -11,12 +11,4 @@ const updateData = (calcData) => {
   };
 };
 
-// const operation = (calcData) => {
-//   return {
-//     type: "CALCULATE_RESULT",
-//     num1: calcData.num1,
-//     num2: calcData.num2,
-//     oper: calcData.oper,
-//   };
-// };
 export default updateData;

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./Components/App";
 import { createStore } from "redux";
-import updateHistory from "./Reducers/Calculate";
+import updateHistory from "./Reducers/UpdateHistory";
 import { Provider } from "react-redux";
 
 const store = createStore(updateHistory);
