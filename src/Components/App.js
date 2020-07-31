@@ -54,7 +54,6 @@ class App extends React.Component {
     }
     this.updateCalc("result", result);
     this.props.dispatch(updateData(this.state));
-    // this.setState({ num1: "", num2: "" });
   };
 
   render() {
@@ -94,11 +93,10 @@ class App extends React.Component {
               onChange={(event) => this.updateCalc("num2", event.target.value)}
             />
             <input type="submit" id="submit" value="Calculate" />
+            <h1> Result = {this.state.result} </h1>
           </form>
         </div>
-        <div>
-          <h1> Result = {this.result} </h1>
-        </div>
+        <div></div>
       </>
     );
   }
